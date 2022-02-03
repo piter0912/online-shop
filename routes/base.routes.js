@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 
 const router = express.Router();
 
-router.get("/", function () {
+router.get("/", function (req, res) {
   res.redirect("/products");
 });
 
