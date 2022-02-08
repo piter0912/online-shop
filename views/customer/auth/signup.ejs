@@ -6,6 +6,12 @@
     <%- include('../../shared/includes/header') %>
     <main>
         <h1>Create New Account</h1>
+        <% if(inputData.errorMessage) { %>
+            <section class="alert">
+                <h2>Invalid input</h2>
+                <p><%= inputData.errorMessage %></p>
+            </section>
+        <% } %>
         <form action="/signup" method="POST">
             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <p>
@@ -14,6 +20,7 @@
                     type="email" 
                     id="email" 
                     name="email" 
+                    value="<%= inputData.email %>"
                     required>
             </p>
             <p>
@@ -22,6 +29,7 @@
                     type="email" 
                     id="confirm-email" 
                     name="confirm-email" 
+                    value="<%= inputData.confirmEmail %>"
                     required>
             </p>
             <p>
@@ -30,6 +38,7 @@
                     type="password" 
                     id="password" 
                     name="password" 
+                    value="<%= inputData.password %>"
                     minlength="6" 
                     required >
             </p>
@@ -40,6 +49,7 @@
                     type="text" 
                     id="fullname" 
                     name="fullname" 
+                    value="<%= inputData.fullname %>"
                     required >
             </p>
             <p>
@@ -48,6 +58,7 @@
                     type="text" 
                     id="street" 
                     name="street" 
+                    value="<%= inputData.street %>"
                     required >
             </p>
             <p>
@@ -56,6 +67,7 @@
                     type="text" 
                     id="postal" 
                     name="postal" 
+                    value="<%= inputData.postal %>"
                     minlength="6" 
                     maxlength="6" 
                     required>
@@ -66,6 +78,7 @@
                     type="text" 
                     id="city" 
                     name="city" 
+                    value="<%= inputData.city %>"
                     required >
             </p>
             <button class="btn">Create Account</button>
