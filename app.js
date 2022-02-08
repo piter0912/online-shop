@@ -8,9 +8,11 @@ const createSessionConfig = require("./config/session");
 const db = require("./database/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandleMiddleware = require("./middlewares/error-handler");
+const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const authRoutes = require("./routes/auth.routes");
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
+const checkAuthStatus = require("./middlewares/check-auth");
 
 const app = express();
 
@@ -25,6 +27,7 @@ const sessionConfig = createSessionConfig();
 app.use(expressSession(sessionConfig));
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
+app.use(checkAuthStatus);
 
 app.use(baseRoutes);
 app.use(authRoutes);
