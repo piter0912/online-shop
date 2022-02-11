@@ -11,7 +11,11 @@ router.get("/products/new", adminController.getNewProduct);
 
 router.get("/products/:id", adminController.getUpdateProduct);
 
-router.post("/products/:id", adminController.updateProduct);
+router.post(
+  "/products/:id",
+  imageUploadMiddleware,
+  adminController.updateProduct
+);
 
 router.post(
   "/products",
