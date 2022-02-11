@@ -9,6 +9,10 @@ router.get("/products", adminController.getProducts);
 
 router.get("/products/new", adminController.getNewProduct);
 
+router.get("/products/:id", adminController.getUpdateProduct);
+
+router.post("/products/:id", adminController.updateProduct);
+
 router.post(
   "/products",
   imageUploadMiddleware,
