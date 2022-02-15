@@ -9,6 +9,7 @@ const db = require("./database/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandleMiddleware = require("./middlewares/error-handler");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
+const protectMiddleware = require("./middlewares/protect-routes");
 const authRoutes = require("./routes/auth.routes");
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
@@ -33,6 +34,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
+app.use(protectMiddleware);
 app.use("/admin", adminRoutes);
 
 app.use(errorHandleMiddleware);
