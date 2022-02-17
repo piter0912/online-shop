@@ -13,9 +13,9 @@
             </li>          
             <% } %>
         </ul> 
-        <form id="cart-total" data-productid="<%= item.product.id %>" data-csrf="<%= locals.csrfToken %>">
-            <p>Total: $<%= locals.cart.totalPrice.toFixed(2) %></p>
+        <div id="cart-total">
+            <p>Total: $<span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(2) %></span></p>
             <button class="btn">Buy products</button>
-        </form>
+        </div>
     </main>
 <%- include('../../shared/includes/footer') %>
